@@ -36,7 +36,7 @@ Hashdir performs the following steps;
 - Sort file paths to get a consistent hash for every system.
 - Compute the hash value for each file separately using the algorithm selected by the -a option (Or md5 as default).
 - Create a "hash string" using the results. Hash string is a string value which consists of a file path and its hash separated by a space character on each line. Print the hash string.
-- Compute the md5 hash value of the hash string and return as the result.
+- Compute the md5 hash value of the hash string, and print it as the result.
 
 ## contributing
 
