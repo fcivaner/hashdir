@@ -1,6 +1,6 @@
 # hashdir
 
-A command line tool to calculate hash of directory trees using various hash algorithms.
+A command line tool to calculate hashes of directory trees using various hash algorithms.
 
 ## installation
 
