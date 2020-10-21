@@ -2,9 +2,10 @@ import argparse
 import logging
 import os
 
+from hashdir import __version__, description, name
 
 def get_parser():
-    parser = argparse.ArgumentParser(description="hashdir")
+    parser = argparse.ArgumentParser(prog=name, description=description)
 
     parser.add_argument("directory", nargs="?", default=".")
 
@@ -19,6 +20,10 @@ def get_parser():
 
     parser.add_argument(
         "--log-level", choices=["error", "info", "debug"], default="info"
+    )
+
+    parser.add_argument(
+        "-v", "--version", action="version", version="{} {}".format(name, __version__)
     )
 
     return parser

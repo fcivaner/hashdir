@@ -1,20 +1,37 @@
 # hashdir
 
-A command line tool to calculate hashes of directory trees using various hash algorithms.
+A command line tool to calculate hash of directory trees using various hash algorithms.
 
-## installation
+## Installing
 
-To install run the following command in your terminal:
+To install, run the following command in your terminal:
 
 ```pip3 install hashdir```
 
-## usage
+## Installing on Android
+
+You may want to install hashdir through Termux or similar on android to check hashes of directories on your android system.
+
+On some systems, you may have to reinstall python to get development libraries, and install libcrypt before installing hashdir for the installation to work:
+
+```bash
+apt install python
+apt install libcrypt
+```
+
+Otherwise, installation on android is the same as others.
+
+```pip3 install hashdir```
+
+## Usage
 
 ```text
 usage: hashdir [-h] [-a {md5,sha1,imohash}] [--log-level {error,info,debug}]
+               [-v]
                [directory]
 
-hashdir
+A command line tool to calculate hashes of directory trees using various hash
+algorithms.
 
 positional arguments:
   directory
@@ -26,9 +43,10 @@ optional arguments:
                         and while being fast for large files, it produces
                         approximate results.
   --log-level {error,info,debug}
+  -v, --version         show program's version number and exit
 ```
 
-## algorithm
+## Algorithm
 
 Hashdir performs the following steps;
 
@@ -38,6 +56,6 @@ Hashdir performs the following steps;
 - Create a "hash string" using the results. Hash string is a string value which consists of a file path and its hash separated by a space character on each line. Print the hash string.
 - Compute the md5 hash value of the hash string, and print it as the result.
 
-## contributing
+## Contributing
 
 Contributions are welcome! Please use black for formatting code before sending a PR.
