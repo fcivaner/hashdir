@@ -15,14 +15,22 @@ def get_parser():
         "--algorithm",
         choices=["md5", "sha1", "imohash"],
         default="md5",
-        help="warning: imohash is a constant-time hashing library, "
+        help="the hashing algorithm for files. warning: imohash is a constant-time hashing library, "
         "and while being fast for large files, it produces approximate results.",
     )
 
-    parser.add_argument("--exclude", action='append', default=[])
+    parser.add_argument(
+        "--exclude",
+        action="append",
+        default=[],
+        help="exclude a pattern, like .git/* or *.log",
+    )
 
     parser.add_argument(
-        "--log-level", choices=["error", "info", "debug"], default="info"
+        "--log-level",
+        choices=["error", "info", "debug"],
+        default="info",
+        help="set the logging level.",
     )
 
     parser.add_argument(
