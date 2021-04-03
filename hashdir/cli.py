@@ -4,6 +4,7 @@ import os
 
 from hashdir import __version__, description, name
 
+
 def get_parser():
     parser = argparse.ArgumentParser(prog=name, description=description)
 
@@ -17,6 +18,8 @@ def get_parser():
         help="warning: imohash is a constant-time hashing library, "
         "and while being fast for large files, it produces approximate results.",
     )
+
+    parser.add_argument("--exclude", action='append', default=[])
 
     parser.add_argument(
         "--log-level", choices=["error", "info", "debug"], default="info"

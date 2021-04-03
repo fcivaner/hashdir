@@ -1,41 +1,9 @@
 #!/usr/bin/env python3
-import os
 import sys
 import traceback
 import logging
 from . import util_logging, cli
-from .util_hash import hash_file_imohash, hash_file_md5, hash_file_sha1, hash_string_md5
-
-
-def get_files(directory):
-    os.chdir(directory)
-    for root, dirs, files in os.walk("."):
-        for name in files:
-            filepath = os.path.join(root, name)
-            yield filepath
-
-
-def hash_files(files, hash_func):
-    files = sorted(files)
-    for f in files:
-        file_hash = hash_func(f)
-        yield (f, file_hash)
-
-
-def get_hash_func(args):
-    if args.algorithm == "md5":
-        return hash_file_md5
-    elif args.algorithm == "sha1":
-        return hash_file_sha1
-    elif args.algorithm == "imohash":
-        return hash_file_imohash
-
-
-def generate_hash_string(file_hashes):
-    hash_string = ""
-    for fh in file_hashes:
-        hash_string += "{} {}\n".format(fh[0], fh[1])
-    return hash_string
+from .util_logic import hashdir
 
 
 def run(args):
@@ -47,13 +15,9 @@ def run(args):
 
     logger.setLevel(util_logging.get_log_level(args.log_level))
 
-    files = list(get_files(args.directory))
-    hash_func = get_hash_func(args)
-    file_hashes = hash_files(files, hash_func)
-    hash_string = generate_hash_string(file_hashes)
+    (hash_string, result) = hashdir(args)
 
     print(hash_string)
-    result = hash_string_md5(hash_string)
     print(result)
 
 
@@ -72,7 +36,7 @@ def main():
             ". Use '--log-level debug' to see details.",
             e,
         )
-        logging.debug(traceback.extract_stack()[0])
+        logging.debug(traceback.format_exc())
         exit_code = EXIT_CODE_ERROR
     sys.stdout.flush()
     exit(exit_code)
