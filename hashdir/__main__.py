@@ -17,7 +17,8 @@ def run(args):
 
     (hash_string, result) = hashdir(args)
 
-    print(hash_string)
+    if not args.quiet:
+        print(hash_string)
     print(result)
 
 

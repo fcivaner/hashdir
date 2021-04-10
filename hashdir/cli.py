@@ -34,6 +34,10 @@ def get_parser():
     )
 
     parser.add_argument(
+        "-q", "--quiet", action="store_true", help="only output the final hash value."
+    )
+
+    parser.add_argument(
         "-v", "--version", action="version", version="{} {}".format(name, __version__)
     )
 
