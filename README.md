@@ -36,13 +36,15 @@ algorithms.
 positional arguments:
   directory
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -a {md5,sha1,imohash}, --algorithm {md5,sha1,imohash}
                         warning: imohash is a constant-time hashing library,
                         and while being fast for large files, it produces
                         approximate results.
+  --exclude EXCLUDE     exclude a pattern, like .git/* or *.log
   --log-level {error,info,debug}
+  -q, --quiet           only output the final hash value.
   -v, --version         show program's version number and exit
 ```
 
